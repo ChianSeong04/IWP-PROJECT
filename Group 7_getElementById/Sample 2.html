@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Pizza King</title>
+<style>
+body{background-color:#EAECEE;}
+.form{
+    max-width:650px;
+	max-height:1100px;
+    background:#FADBD8 ;
+    margin: 0 auto;
+	margin-top:30px;
+    padding: 20px;
+    box-shadow:1px 1px 16px rgba(0, 0, 0, 0.3);
+	border-radius:5px;
+	
+}
+img{margin-left:280px;}
+
+h1{text-align:center;}
+
+span {color:red;
+	font-weight:bold;}
+	
+input[type=text],[type=number],[type=tel]
+{
+border:2px ridge black;
+border-radius:10px;
+margin-top:10px;
+padding:10px;
+
+}
+input[type=button]{background-color:maroon;
+					text-align:center;
+				    margin-left:250px;
+					padding:10px;
+					border-radius:5px;
+					font-weight:bold;
+					border:2px solid white;
+					color:white;}
+				   
+input[type=button]:hover
+{	background-color:blue;
+	font-style:italic;
+	font-family:Arial;
+	color:white;
+}
+#receipt{color:black;
+		font-size:17px;}
+</style>
+<script>
+function pizza_data()
+{
+	var pizza_code,name,phone,quantity,delivery
+	var name_check=0,phone_check=0,pizza_check=0,quantity_check=0,delivery_check=0;
+	var combo_name,combo_price;
+	var delivery_status,delivery_price=0,total=0;
+	
+
+	name=document.user_form.user_name.value;
+	phone=document.user_form.user_phone.value;
+	pizza_code=document.user_form.pizza_type.value;
+	quantity=parseInt(document.user_form.qty.value);
+	delivery=document.user_form.option.value;
+
+    name_check=/^[A-Za-z]+$/;//alphabet with not space
+	phone_check=/^\d{10}$/; //10 digit with not space and punctiotian
+	
+	
+	
+	if(name == ""||!name.match(name_check))
+	{
+	    document.getElementById("error1").innerHTML="<br>Invalid!<br>*Please enter your name*";
+	}
+	else
+	{
+	   document.getElementById("error1").innerHTML="valid";
+	   name_check=1;
+	}
+	if(phone == ""||!phone.match(phone_check)) 
+	{
+	    document.getElementById("error2").innerHTML="<br>Invalid!<br>*Please enter your phone*";
+	}
+	else
+	{
+	   document.getElementById("error2").innerHTML="valid";
+	   phone_check=1;
+	}
+	
+	if(pizza_code == "")
+	{
+		document.getElementById("pizza_error").innerHTML="Please Choose a pizza";
+	}
+	else
+	{
+		document.getElementById("pizza_error").innerHTML="";
+		pizza_check = 1;
+	}
+	
+	if(quantity == "" || isNaN(quantity))
+	{
+		document.getElementById("qty_error").innerHTML="Please enter the quantity";
+	}
+	else
+	{
+		document.getElementById("qty_error").innerHTML="";
+		quantity_check = 1;
+	}
+	if(delivery == "")
+	{
+		document.getElementById("delivery_error").innerHTML="Please Choose whether delivery";
+	}
+	else
+	{
+		document.getElementById("delivery_error").innerHTML="";
+		delivery_check = 1;
+	}
+	
+	
+	switch(pizza_code)
+	{
+	   case "P1":
+	       combo_name="Big Selection Combo";
+		   combo_price=79.90;
+		   break;
+	  
+	   case "P2":
+	       combo_name="Value Lunch Combo";
+		   combo_price=27.90;
+		   break;
+		   
+	   case "P3":
+	       combo_name="Value Dinner Combo";
+		   combo_price=32.00;
+		   break;
+		   
+	   case "P4":
+	       combo_name="Double Night Combo";
+		   combo_price=45.50;
+		   break;
+		   
+       case "P5":
+
+		   combo_name="Family Combo";
+		   combo_price=69.90;
+
+	}
+	
+	switch(delivery)
+	{
+		case "Y":
+		delivery_status="Yes";
+		delivery_price=5;
+		break;
+		
+		case "N":
+		delivery_status="NO";
+		delivery_price=0;
+		break;
+	}	
+	
+	   total=(quantity*combo_price)+delivery_price;
+		
+	if(name_check == 1 && phone_check == 1 && pizza_check == 1 && quantity_check == 1 &&delivery_check==1)
+	{
+		document.getElementById("receipt").innerHTML="<b>Hi, "+name+". This is your receipt!</b><br><br> Phone : "+phone+
+											"<br> Combo Pizza Name: "+combo_name+
+											"<br> Combo Pizza Price: RM"+combo_price.toFixed(2)+
+											"<br> Quantity :"+quantity+
+											"<br> Delivery :"+delivery_status+
+											"<br><br> Total Price :RM"+total.toFixed(2);
+	}
+	else
+	{
+		alert("Please fill up the details. Thank You");
+	}
+		
+}
+
+
+
+
+</script>
+
+</head>
+
+<body>
+<div class="form">
+<form name = "user_form">
+<img src="pizza.png" width="100px" height="100px">
+<h1> Welcome To Pizza King</h1>
+	
+	<p>Name : <input type="text" name="user_name" placeholder="alphabet only (no space)"><span id="error1"></span>
+	<p>Phone : <input type="tel" name="user_phone" placeholder="phone with no dash (-)" ><span id="error2"></span>
+	<p>Pizza: <span id="pizza_error" ></span>
+
+	<br><input type="radio" name="pizza_type" value="P1">Big Selection Combo(RM79.90)<br>&nbsp;-->1 Pasta + 1 Drinks + 2 Regular Pizza + 1 set Fried Chicken<br>
+	<br><input type="radio" name="pizza_type" value="P2">Value Lunch Combo(RM27.90)<br>&nbsp;-->1 Regular Pepperoni Delight Pizza + 1 Drinks + Garlic Bread<br>
+	<br><input type="radio" name="pizza_type" value="P3">Value Dinner Combo(RM32.00)<br>&nbsp;-->1 Large Pizza + 2 Drinks + Lava Cake + 1 Ice Cream<br>
+	<br><input type="radio" name="pizza_type" value="P4">Double Night Combo(RM45.50)<br>&nbsp;-->2 Regular Pizza + 1 set Hawaii Chicken Salad + 1 set Crispy Prawns + 2 Drinks<br>
+	<br><input type="radio" name="pizza_type" value="P5">Family Combo(RM69.90)<br>&nbsp;-->1 Large Pizza + 2 Regular Pizza + 1 set Mushroom Soup + 1 set Fried Chicken + 3 Drinks<br>
+
+	
+	<p>Quantity : 
+	<input type="number" name="qty" min="1"/>
+	<span id="qty_error" ></span>
+	</p>
+	
+	
+<p>Delivery ? : 	
+	<input type="radio" name="option" value="Y" /> Yes
+	<input type="radio" name="option" value="N" /> No
+	<span id="delivery_error" ></span>
+	</p>
+	
+	
+	<p><input type="button" name="order_btn" value="Order Now" onclick="pizza_data();"/>
+<p id="receipt"></p>
+
+</form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>MARVEL CINEMA</title>
+	<style>
+body{background-color:#afafb6;}
+.form{
+    max-width:650px;
+	max-height:1100px;
+    background:skyblue;
+    margin: 0 auto;
+	margin-top:30px;
+    padding: 20px;
+    box-shadow:1px 1px 16px rgba(0, 0, 0, 0.3);
+	border-radius:5px;
+	
+}
+img{margin-left:200px;}
+
+h1{text-align:center;}
+
+span {color:red;
+	font-weight:bold;}
+	
+input[type=text],[type=number],[type=date],[type=time],select
+{
+border:2px ridge green;
+box-sizing:border-box;
+border-radius:5px;
+margin-top:10px;
+padding:8px;
+}
+input[type=button]{text-align:center;
+				   margin-left:250px;
+					padding:10px;
+					border-radius:5px;
+					font-weight:bold;}
+				   
+input[type=button]:hover
+{
+	
+	background-color:blue;
+	font-style:italic;
+	font-family:Arial;
+	color:white;
+}
+#information{color:black;
+		font-size:17px;}
+</style>
+	<script>
+		function get_total()
+		{
+			var user_name,movie_code,a_qty,c_qty,user_date,user_time;
+			var name_check=0,movie_check=0,date_check=0,time_check=0;
+			var total=0,adult_price=0,child_price=0,m_price=0,movie_name="",movie_time="",add_on_name="";
+			var add_on=[];
+			var i=0;
+			var x=0;
+			var add_on_price=0,total_add_price=0,add_on_details="";
+		
+			user_name=document.movie_form.name.value;
+			movie_code=document.movie_form.movie.value;
+			a_qty=parseInt(document.movie_form.adult_qty.value);
+			c_qty=parseInt(document.movie_form.child_qty.value);
+			user_date=document.movie_form.date.value;
+			user_time=parseInt(document.movie_form.time.value);
+			
+			if(user_name=="")
+			{
+				document.getElementById("name-display").innerHTML="Please Enter Username";
+			}
+			else
+			{
+				document.getElementById("name-display").innerHTML="";
+				name_check=1;
+			}
+			
+			switch(movie_code)
+			{
+				case '1':
+				m_price = 9.90;
+				movie_name="Avenger: The Last Game";
+				break;
+				
+				case '2':
+				m_price = 14.90;
+				movie_name="Spider-Man: No Way Home";
+				break;
+				
+				case '3':
+				m_price = 12.90;
+				movie_name="The Legend of the Ten Rings";
+				break;
+				
+				case '4':
+				m_price = 7.90;
+				movie_name="Avengers:Infinity World";
+				break;
+				
+				case '5':
+				m_price = 13.90;
+				movie_name="Doctor Strange 2: In the Multiverse";
+				break;
+				
+				default:
+				document.getElementById("movie_price").innerHTML="Please Select Movie";
+			}
+			
+			if(m_price==0)
+			{
+				document.getElementById("movie_price").innerHTML="Please Select Movie";
+			}
+			else
+			{
+				document.getElementById("movie_price").innerHTML="";
+				movie_check=1;
+			}
+			
+			if(a_qty=="" || isNaN(a_qty))
+			{
+				document.getElementById("adult-qty").innerHTML="Please Enter Quantity";
+			}
+			else
+			{
+				document.getElementById("adult-qty").innerHTML="";
+				adult_check=1;
+			}
+			
+			if(c_qty=="" || isNaN(c_qty))
+			{
+				c_qty=0;
+			}
+		
+			if(user_date=="")
+			{
+				document.getElementById("date-error").innerHTML="Please Enter A Date";
+			}
+			else
+			{
+				document.getElementById("date-error").innerHTML="";
+				date_check=1;
+			}
+			
+			switch(user_time)
+			{
+				case 1:movie_time="10:00 AM";
+				break;
+				
+				case 2:movie_time="1:00 PM";
+				break;
+				
+				case 3:movie_time="4:00 PM";
+				break;
+				
+				case 4:movie_time="7:00 PM";
+				break;
+				
+			}
+			
+			if(movie_time=="")
+			{
+				document.getElementById("time-error").innerHTML="Please Enter A Time";
+			}
+			else
+			{
+				document.getElementById("time-error").innerHTML="";
+				time_check=1;
+			}
+			
+			if(name_check==0 || movie_check==0 || date_check==0 || time_check==0 || adult_check==0)
+			{
+				alert("Please Fill Up The From Correctly..");
+			}
+			
+			for(i=0;i<document.movie_form.add.length;i++)
+		{
+			if(document.movie_form.add[i].checked)
+				{
+					add_on[x]=document.movie_form.add[i].value;
+					x++;
+				}
+			
+		}
+		
+		for(i=0;i<add_on.length;i++)
+		{
+			if(add_on[i]=='O1')
+			{
+				add_on_name="Popcorn";
+				add_on_price=5.5;
+			}
+			else if(add_on[i]=='O2')
+			{
+				add_on_name="Cocacola";
+				add_on_price=2.5;
+			}
+			else
+			{
+				add_on_name="Corndogs";
+				add_on_price=2.0;
+			}
+		
+			add_on_details=add_on_details+"<br> -- "+add_on_name+"(RM "+add_on_price.toFixed(2)+")";
+			total_add_price=add_on_price+total_add_price;
+		}
+			adult_price=m_price*a_qty;
+			child_price=(m_price-2)*c_qty;
+			total=adult_price+child_price+total_add_price;
+			
+
+			if(name_check==1 && movie_check==1 && date_check==1 && time_check==1 && adult_check==1)
+			{	
+				document.getElementById("information").innerHTML="<h4>Receipt</h4> Name : "+user_name+"<br> Movie :"+movie_name+" (RM "+m_price.toFixed(2)+")<br> Adult : RM"+adult_price.toFixed(2)+"<br> Children : RM "+child_price.toFixed(2)+"<br> Date : "+user_date+"<br> Time : "+movie_time;
+				if(total_add_price!=0)
+				{
+					document.getElementById("total_add").innerHTML="Add On Details : "+add_on_details+"<br> Add On Price: RM "+total_add_price.toFixed(2);
+				}
+				document.getElementById("grandtotal").innerHTML="<br><b> Total : RM "+total.toFixed(2);
+			}
+		}
+
+	</script>
+</head>
+<body>
+<div class="form">
+<img src="marvel.png" width="310px" height="200px">
+	<h1>Marvel Cinema</h1>
+	<form name = "movie_form">
+		<p>Enter UserName: <input type="text" name="name" ><span id="name-display" ></span></p>
+		<p>Movies &nbsp;&nbsp;: 
+			<select name="movie">
+				<option>Choose Movie</option>
+				<option value="1">Avenger: The Last Game&emsp;&emsp;&emsp;&emsp;&nbsp; --RM9.90</option>
+				<option value="2">Spider-Man: No Way Home&emsp;&emsp;&emsp;&ensp;--RM14.90</option>
+				<option value="3">The Legend of the Ten Rings&emsp;&emsp;&emsp;--RM12.90</option>
+				<option value="4">Avengers:Infinity World&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;--RM7.90</option>
+				<option value="5">Doctor Strange 2: In the Multiverse --RM13.90</option>
+			</select>
+			<span id="movie_price" ></span>
+		</p>
+		<p>Adult : <input type="number" name="adult_qty" min="1" max="10"><span id="adult-qty"></span></p>
+		
+		
+		<p>Child : <input type="number" name="child_qty" min="0" max="10" default="0" value="0"><span id="child-qty" ></span></p>
+		
+		<p>
+			Date : <input type="date" name="date" min="2021-10-10" max="2021-10-31">
+			<span id="date-error"></span>
+		</p>
+		
+		
+		<p>
+			Time :<select name="time">
+				<option>Choose Time</option>
+				<option value="1">10:00 AM</option>
+				<option value="2">1:00 PM</option>
+				<option value="3">4:00 PM</option>
+				<option value="4">7:00 PM</option>
+			</select>
+			<span id="time-error"></span>
+		</p>
+		<p>Add-On:
+			<input type="checkbox" name="add" value="O1">Popcorn (RM 5.50)
+			<input type="checkbox" name="add" value="O2">Cocacola (RM 2.50)
+			<input type="checkbox" name="add" value="O3">Corndogs (RM 2.00)
+		</p>
+		<p><input type="button" name="buynow" value="Buy Now" onclick="get_total();"></p>
+		
+		<p id="information"></p>
+		<p id="total_add"></p>
+		<p id="grandtotal"</p>
+	</form>
+	</div>
+</body>
+</html>

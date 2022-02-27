@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>CGPA CALCULATOR</title>
+
+<style>
+body{background-color:#afafb6;}
+.form{
+    max-width:650px;
+	max-height:850px;
+    background:skyblue;
+    margin: 0 auto;
+	margin-top:30px;
+    padding: 20px;
+    box-shadow:1px 1px 16px rgba(0, 0, 0, 0.3);
+	border-radius:5px;
+	
+}
+img{margin-left:200px;}
+
+h1{text-align:center;}
+
+span {color:red;
+	font-weight:bold;}
+	
+input[type=text],[type=number]
+{
+border:2px ridge green;
+box-sizing:border-box;
+border-radius:10px;
+margin-top:10px;
+padding:10px;
+}
+input[type=button]{text-align:center;
+				   margin-left:250px;
+					padding:10px;
+					border-radius:5px;
+					font-weight:bold;}
+				   
+input[type=button]:hover
+{
+	
+	background-color:blue;
+	font-style:italic;
+	font-family:Arial;
+	color:white;
+}
+#display{color:black;
+		font-size:17px;}
+</style>
+
+<script>
+
+function validate()
+{
+	var id, name, programme, programme_name, gpa1, gpa2, gpa3;
+	var id_check = 0, name_check = 0, programme_check = 0, gpa1_check = 0, gpa2_check = 0, gpa3_check = 0;
+	
+	id = parseInt(document.detailsfrm.stud_id.value);
+	name = document.detailsfrm.stud_name.value;
+	programme = document.detailsfrm.programme.value;
+	gpa1 = parseFloat(document.detailsfrm.stud_gpa1.value);
+	gpa2 = parseFloat(document.detailsfrm.stud_gpa2.value);
+	gpa3 = parseFloat(document.detailsfrm.stud_gpa3.value);
+	
+	if(id == "" || isNaN(id))
+	{
+		document.getElementById("error_id").innerHTML="Please Enter Student ID";
+	}
+	else
+	{
+		document.getElementById("error_id").innerHTML="";
+		id_check = 1;
+	}
+	if(name == "")
+	{
+		document.getElementById("error_name").innerHTML="Please Enter Student Name";
+	}
+	else
+	{
+		document.getElementById("error_name").innerHTML="";
+		name_check = 1;
+	}
+	if(programme == "")
+	{
+		document.getElementById("error_prog").innerHTML="Please Choose A Programme";
+	}
+	else
+	{
+		document.getElementById("error_prog").innerHTML="";
+		programme_check = 1;
+	}
+	if(gpa1 == null || isNaN(gpa1) || gpa1 > 4)
+	{
+		document.getElementById("error_gpa1").innerHTML="Please key in a valid GPA";
+	}
+	else
+	{
+		document.getElementById("error_gpa1").innerHTML="";
+		gpa1_check = 1;
+	}
+	if(gpa2 == null || isNaN(gpa2)|| gpa2 > 4)
+	{
+		document.getElementById("error_gpa2").innerHTML="Please key in a valid GPA";
+	}
+	else
+	{
+		document.getElementById("error_gpa2").innerHTML="";
+		gpa2_check = 1;
+	}
+	if(gpa3 == null || isNaN(gpa3)|| gpa3 > 4)
+	{
+		document.getElementById("error_gpa3").innerHTML="Please key in a valid GPA";
+	}
+	else
+	{
+		document.getElementById("error_gpa3").innerHTML="";
+		gpa3_check = 1;
+	}
+	
+	switch(programme)
+	{
+		case "FIT": programme_name = "Foundation in Information Technology";
+		break;
+		case "FIB": programme_name = "Foundation in Business";
+		break;
+		case "FIA": programme_name = "Foundation in Accounting";
+		break;
+		case "FIE": programme_name = "Foundation in Engineering";
+		break;
+		case "FIL": programme_name = "Foundation in Law";
+		break;
+	}
+	
+	if(id_check == 1 && name_check == 1 && programme_check == 1 && gpa1_check == 1 && gpa2_check == 1 && gpa3_check == 1)
+	{
+		calculate(id,name,programme_name,gpa1,gpa2,gpa3);
+	}
+	else
+		alert("Please Fill Up All The Details. Thank You");
+	
+}
+
+function calculate(id,name,programme_name,gpa1,gpa2,gpa3)
+{
+	var cgpa = 0;
+	
+	cgpa = (gpa1 + gpa2 + gpa3 ) / 3;
+	
+	document.getElementById("display").innerHTML="Student ID&emsp; &ensp; &nbsp;: "+id+
+												 "<br>Student Name &nbsp; &nbsp;: "+name+
+												 "<br>Programme &emsp; &ensp;: "+programme_name+
+												 "<br>GPA of 1<sup>st</sup> sem &nbsp;: "+gpa1.toFixed(2)+
+												 "<br>GPA of 2<sup>nd</sup> sem : "+gpa2.toFixed(2)+
+												 "<br>GPA of 3<sup>rd</sup> sem &nbsp;: "+gpa3.toFixed(2)+
+												 "<br><br><b>CGPA</b>: "+cgpa.toFixed(2);
+}
+
+</script>
+
+</head>
+
+<body>
+<div class="form">
+<img src="mmu.png" width="230px" height="100px">
+<h1>MMU FOUNDATION CGPA CALCULATOR</h1>
+
+<form name="detailsfrm">
+
+	<p>Students ID&emsp; &ensp;: <input type="text" name="stud_id" maxlength="10" /> <span id="error_id"></span></p>
+	<p>Students Name&nbsp; : <input type="text" name="stud_name" maxlength="30" /> <span id="error_name"></span></p>
+	<p>Programme &emsp; &ensp;: <input type="radio" name="programme" value="FIT" />Information Technology
+								<input type="radio" name="programme" value="FIB" />Business
+								<input type="radio" name="programme" value="FIA" />Accounting
+								<input type="radio" name="programme" value="FIE" />Engineering
+								<input type="radio" name="programme" value="FIL" />Law&ensp;
+								&ensp;<span id="error_prog"></span></p>
+	<p>GPA of 1<sup>st</sup> sem &nbsp;: <input type="text" name="stud_gpa1" maxlength="4" /> <span id="error_gpa1"></span></p>
+	<p>GPA of 2<sup>nd</sup> sem : <input type="text" name="stud_gpa2" maxlength="4" /> <span id="error_gpa2"></span></p>
+	<p>GPA of 3<sup>rd</sup> sem &nbsp;: <input type="text" name="stud_gpa3" maxlength="4" /> <span id="error_gpa3"></span></p>
+	
+	<br>
+	
+	<p><input type="button" name="calcbtn" value="Calculate CGPA" onclick="validate();" /></p>
+<p id="display">&nbsp;</p>
+</form>
+<br>
+
+</div>
+</body>
+
+</html>
