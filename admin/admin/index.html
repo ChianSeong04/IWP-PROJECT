@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Marina Admin Dashboard</title>
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/style.css"> </head>
+
+<body>
+	<div class="main-wrapper">
+		<div class="header">
+			<div class="header-left">
+				<a href="index.html" class="logo"> <img src="assets/img/logo.png"alt="logo"> <span class="logoclass">Marina Bay</span> </a>
+			</div>
+			
+			<a href="login.html" class="logout" >Log Out</a>
+			
+			
+		</div>
+<div class="sidebar" id="sidebar">
+
+<div id="sidebar-menu" class="sidebar-menu">
+<ul>
+<li style="background-color:steelblue;">
+<a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+</li>
+<li class="list-divider"></li>
+<li class="submenu">
+<a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="all-customer.html"> All customers </a></li>
+<li><a href="edit-customer.html"> Edit Customer </a></li>
+<li><a href="add-customer.html"> Add Customer </a></li>
+</ul>
+</li>
+<li class="submenu">
+<a href="#"><i class="fas fa-file-invoice"></i><span> Booking </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="all-booking.html">All Booking </a></li>
+<li><a href="edit-booking.html"> Edit Booking </a></li>
+<li><a href="add-booking.html"> Add Booking </a></li>
+</ul>
+ </li>
+<li class="submenu">
+<a href="#"><i class="fas fa-key"></i> <span> Rooms </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="all-rooms.html">All Rooms </a></li>
+<li><a href="edit-room.html"> Edit Rooms </a></li>
+<li><a href="edit-room-list.html"> Edit Rooms List </a></li>
+<li><a href="add-room.html"> Add Rooms </a></li>
+</ul>
+</li>
+<li class="submenu">
+<a href="#"><i class="fas fa-user-cog"></i> <span> Staff </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="all-staff.html">All Staff </a></li>
+<li><a href="edit-staff.html"> Edit Staff </a></li>
+<li><a href="add-staff.html"> Add Staff </a></li>
+</ul>
+ </li>
+
+
+<li class="submenu">
+<a href="#">	
+<i class="fas fa-user-tie"></i><span> Employees </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="leaves.html">Leaves </a></li>
+<li><a href="holidays.html">Holidays </a></li>
+<li><a href="attendance.html">Attendance </a></li>
+<li> <a href="activities.html"> <span>Activities </span><i class="far fa-bell"></i></a> </li>
+</ul>
+</li>
+<li class="submenu">
+<a href="#"><i class="far fa-money-bill-alt"></i> <span> Invoice </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="create-invoice.html">Create Invoice </a></li>
+<li><a href="invoice-reports.html">Invoice Report </a></li>
+</ul>
+</li>
+<li class="submenu">
+<a href="#"><i class="fas fa-cog"></i><span> Profile </span> <span class="menu-arrow"></span></a>
+<ul class="submenu_class" style="display: none;">
+<li><a href="profile.html">Profile Setting </a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+		<div class="page-wrapper">
+			<div class="content container-fluid">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-sm-12 mt-5">
+							<h3 class="page-title mt-3">Dashboard</h3>
+							
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">236</h3>
+										<h6 class="text-muted">Total Booking</h6> </div>
+									
+									<div class="ml-auto mt-md-3 mt-lg-0">
+									<i class="fas fa-user-plus fa-2x"></i>
+									 </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">180</h3>
+										<h6 class="text-muted">Available Rooms</h6> </div>
+									
+									<div class="ml-auto mt-md-3 mt-lg-0"> <i class="fas fa-hotel fa-2x"></i></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">1538</h3>
+										<h6 class="text-muted">Enquiry</h6> </div>
+									<div class="ml-auto mt-md-3 mt-lg-0"><i class="fas fa-question-circle fa-2x"></i> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-3 col-sm-6 col-12">
+						<div class="card board1 fill">
+							<div class="card-body">
+								<div class="dash-widget-header">
+									<div>
+										<h3 class="card_widget_header">364</h3>
+										<h6 class="text-muted">Collections</h6> </div>
+									<div class="ml-auto mt-md-3 mt-lg-0"> <i class="fas fa-globe fa-2x"></i> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-lg-6">
+						<div class="card card-chart">
+							<div class="card-header">
+								<h4 class="card-title">VISITORS</h4> </div>
+							<div class="card-body">
+								<div id="line-chart"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-6">
+						<div class="card card-chart">
+							<div class="card-header">
+								<h4 class="card-title">ROOMS BOOKED</h4> </div>
+							<div class="card-body">
+								<div id="donut-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 d-flex">
+						<div class="card card-table flex-fill">
+							<div class="card-header">
+								<h4 class="card-title float-left mt-2">Booking</h4>
+								<a href="all-booking.html" class="btn btn-primary float-right veiwbutton">View All</a>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-hover table-center">
+										<thead>
+											<tr>
+												<th>Booking ID</th>
+												<th>Name</th>
+												<th>Room Type</th>
+												<th>Total Numbers</th>
+												<th>Quantity</th>
+												<th>Check-in Date</th>
+												<th>Check-out Date</th>
+												<th>Check-in Time</th>
+												<th>Email</th>
+												<th>Ph.Number</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>BKG-1001</td>
+												<td>Jackson Wong</td>
+												<td>Superior Room</td>
+												<td style="text-align:center;">2</td>
+												<td style="text-align:center;">2</td>
+												<td>17-09-2021</td>
+												<td>18-09-2021</td>
+												<td>3.00pm</td>
+												<td>jackson@gmail.com</td>
+												<td>016-7451224</td>
+											</tr>
+											<tr>
+												<td>BKG-1002</td>
+												<td>Lim Ming Sheng</td>
+												<td>Couple Room</td>
+												<td style="text-align:center;">7</td>
+												<td style="text-align:center;">7</td>
+												<td>17-09-2021</td>
+												<td>18-09-2021</td>
+												<td>5.00pm</td>
+												<td>lee@gmail.com</td>
+												<td>013-5591793</td>
+											</tr>
+											<tr>
+												<td>BKG-1003</td>
+												<td>Law Jennie </td>
+												<td>Deluxe Room</td>
+												<td style="text-align:center;">10</td>
+												<td style="text-align:center;">10</td>
+												<td>19-09-2021</td>
+												<td>20-09-2021</td>
+												<td>1.00pm</td>
+												<td>law@gmail.com</td>
+												<td>014-2294148</td>
+											</tr>
+											
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--elective choosen navigate bar-->
+	<script src="assets/js/jquery-3.5.1.min.js"></script>
+
+	<!--pie/graph-->
+	<script src="assets/plugins/raphael/raphael.min.js"></script>
+	<script src="assets/plugins/morris/morris.min.js"></script>
+	<script src="assets/js/chart.morris.js"></script>
+	<script src="assets/js/script.js"></script>
+</body>
+
+</html>
